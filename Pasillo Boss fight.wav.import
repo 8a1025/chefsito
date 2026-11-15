@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://db6ei3n8b7g4q"
+path="res://.godot/imported/Pasillo Boss fight.wav-8ac6075fb3667a14e0e38cf87c12331b.sample"
+
+[deps]
+
+source_file="res://Pasillo Boss fight.wav"
+dest_files=["res://.godot/imported/Pasillo Boss fight.wav-8ac6075fb3667a14e0e38cf87c12331b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
