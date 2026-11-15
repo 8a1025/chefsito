@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://btx1dqvxfclci"]
+
+[ext_resource type="Script" uid="uid://d3ifdtf7a18qf" path="res://Escenas/ui_zanahoria.gd" id="1_bilmd"]
+[ext_resource type="Texture2D" uid="uid://cyet0lrxdg10y" path="res://Escenas/Plataformero/Zanahoria.png" id="1_y42pj"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=240456896]
+script = ExtResource("1_bilmd")
+
+[node name="Control" type="Control" parent="." unique_id=983683307]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1363769218]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "00"
+
+[node name="Node2D" type="Node2D" parent="Control/Label" unique_id=267580929]
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Label/Node2D" unique_id=174289747]
+position = Vector2(30.000004, 9.000001)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_y42pj")
+hframes = 3

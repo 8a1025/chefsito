@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Escenas/BossFight/papa.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://Assets/BossFight/papa.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="Forma_papa"]
+size = Vector2(12, 4)
+
+[node name="Papa" type="Area2D"]
+z_index = 4
+script = ExtResource("1_scr")
+
+[node name="Aviso" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 500, 0)
+width = 2.0
+default_color = Color(1, 0.85, 0.3, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Forma_papa")

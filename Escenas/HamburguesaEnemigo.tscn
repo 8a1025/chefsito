@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://Escenas/hamburguesa_enemigo.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://Assets/hamburguesa_enemigo_v01_2026-11-15.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1"]
+atlas = ExtResource("2_tex")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2"]
+atlas = ExtResource("2_tex")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3"]
+atlas = ExtResource("2_tex")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5"]
+atlas = ExtResource("2_tex")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1"]
+atlas = ExtResource("2_tex")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2"]
+atlas = ExtResource("2_tex")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3"]
+atlas = ExtResource("2_tex")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(16, 12)
+
+[node name="HamburguesaEnemigo" type="Node2D"]
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_h")
+animation = &"bounce"
+autoplay = "bounce"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_h")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

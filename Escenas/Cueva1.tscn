@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cyiubqk43hcfr"]
+
+[ext_resource type="Script" uid="uid://c2rdli6efod8o" path="res://Cueva1.gd" id="1_f4o20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xadyu"]
+
+[node name="Node2D" type="Node2D" unique_id=1597210265]
+script = ExtResource("1_f4o20")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1511003463]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1108196039]
+shape = SubResource("RectangleShape2D_xadyu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

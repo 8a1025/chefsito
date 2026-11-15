@@ -1,0 +1,51 @@
+extends CharacterBody2D
+
+@onready var animated_sprite = $AnimatedSprite
+
+var speed = 100
+var last_direction = "down"
+var muerto = false
+
+
+func _physics_process(_delta):
+	if muerto:
+		return
+	get_input()
+	move_and_slide()
+
+
+func get_input():
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+
+	if input_direction == Vector2.ZERO:
+		velocity = Vector2.ZERO
+		update_animation("idle")
+		return
+
+	if abs(input_direction.x) > abs(input_direction.y):
+		if input_direction.x > 0:
+			last_direction = "right"
+		else:
+			last_direction = "left"
+	else:
+		if input_direction.y > 0:
+			last_direction = "down"
+		else:
+			last_direction = "up"
+
+	update_animation("run")
+	velocity = input_direction * speed
+
+
+func update_animation(state):
+	animated_sprite.play(state + "_" + last_direction)
+
+
+func muerte():
+	if muerto:
+		return
+	muerto = true
+	velocity = Vector2.ZERO
+	animated_sprite.play("death")
+	await get_tree().create_timer(1.5).timeout
+	get_tree().reload_current_scene()

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Escenas/BossFight/lechuga.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://Assets/BossFight/lechuga.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="Forma_lechuga"]
+radius = 8.0
+
+[node name="Lechuga" type="Area2D"]
+z_index = 3
+script = ExtResource("1_scr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_tex")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Forma_lechuga")

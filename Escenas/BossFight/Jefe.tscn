@@ -1,0 +1,139 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://Escenas/BossFight/jefe.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://Assets/BossFight/jefe_hamburguesa.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="At_i0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_i1"]
+atlas = ExtResource("2_tex")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_i2"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_i3"]
+atlas = ExtResource("2_tex")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_a0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_a1"]
+atlas = ExtResource("2_tex")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_g0"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m1"]
+atlas = ExtResource("2_tex")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m2"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m3"]
+atlas = ExtResource("2_tex")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m4"]
+atlas = ExtResource("2_tex")
+region = Rect2(192, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="At_m5"]
+atlas = ExtResource("2_tex")
+region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="Frames_jefe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_i3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_a1")
+}],
+"loop": true,
+"name": &"ataque",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_g0")
+}],
+"loop": false,
+"name": &"golpe",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("At_m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("At_m5")
+}],
+"loop": false,
+"name": &"muerte",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Forma_cuerpo"]
+size = Vector2(36, 30)
+
+[node name="Jefe" type="Node2D" groups=["jefe"]]
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("Frames_jefe")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Cuerpo" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo"]
+position = Vector2(0, 4)
+shape = SubResource("Forma_cuerpo")
+
+[node name="Boca" type="Marker2D" parent="."]
+position = Vector2(0, 10)

@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://di0ww6d1yi38w"]
+
+[ext_resource type="Script" uid="uid://cygcc0hf5khm1" path="res://Escenas/BossFight/boss_fight.gd" id="1_scr"]
+[ext_resource type="Texture2D" uid="uid://3ejb3tyq2wu5" path="res://Assets/BossFight/arena_fondo.png" id="2_fondo"]
+[ext_resource type="PackedScene" path="res://Escenas/BossFight/Jefe.tscn" id="3_jefe"]
+[ext_resource type="PackedScene" uid="uid://byr4nptsuo46h" path="res://Escenas/Player.tscn" id="4_player"]
+[ext_resource type="AudioStream" uid="uid://dqgwf22fvfbqr" path="res://Assets/BossFight/Boss_fight.wav" id="5_musica"]
+[ext_resource type="Texture2D" uid="uid://dpgh6kj4bd0ys" path="res://Assets/BossFight/corazon.png" id="6_corazon"]
+[ext_resource type="Texture2D" uid="uid://cvviq7imq010k" path="res://Assets/BossFight/bien_hecho_1.png" id="7_foto"]
+
+[sub_resource type="RectangleShape2D" id="Pared_arriba"]
+size = Vector2(480, 48)
+
+[sub_resource type="RectangleShape2D" id="Pared_abajo"]
+size = Vector2(480, 16)
+
+[sub_resource type="RectangleShape2D" id="Pared_lado"]
+size = Vector2(16, 270)
+
+[sub_resource type="StyleBoxFlat" id="Barra_fondo"]
+bg_color = Color(0.12, 0.08, 0.08, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="Barra_relleno"]
+bg_color = Color(0.85, 0.2, 0.15, 1)
+
+[node name="BossFight" type="Node2D" unique_id=1901971404]
+script = ExtResource("1_scr")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=743959642]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("2_fondo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="." unique_id=817935695 groups=["paredes"]]
+
+[node name="Arriba" type="CollisionShape2D" parent="Paredes" unique_id=2061764476]
+position = Vector2(240, 24)
+shape = SubResource("Pared_arriba")
+
+[node name="Abajo" type="CollisionShape2D" parent="Paredes" unique_id=1076232423]
+position = Vector2(240, 262)
+shape = SubResource("Pared_abajo")
+
+[node name="Izquierda" type="CollisionShape2D" parent="Paredes" unique_id=1018399980]
+position = Vector2(8, 135)
+shape = SubResource("Pared_lado")
+
+[node name="Derecha" type="CollisionShape2D" parent="Paredes" unique_id=361661679]
+position = Vector2(472, 135)
+shape = SubResource("Pared_lado")
+
+[node name="Jefe" parent="." unique_id=256758607 instance=ExtResource("3_jefe")]
+position = Vector2(240, 80)
+
+[node name="Player" parent="." unique_id=1601985262 instance=ExtResource("4_player")]
+position = Vector2(240, 220)
+
+[node name="Camara" type="Camera2D" parent="." unique_id=1800966545]
+position = Vector2(240, 135)
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=964148976]
+stream = ExtResource("5_musica")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=85650611]
+
+[node name="Nombre" type="Label" parent="UI" unique_id=1846169912]
+offset_left = 140.0
+offset_top = 2.0
+offset_right = 340.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "MEGA HAMBURGUESA"
+horizontal_alignment = 1
+
+[node name="BarraJefe" type="ProgressBar" parent="UI" unique_id=348062683]
+offset_left = 140.0
+offset_top = 16.0
+offset_right = 340.0
+offset_bottom = 24.0
+theme_override_styles/background = SubResource("Barra_fondo")
+theme_override_styles/fill = SubResource("Barra_relleno")
+max_value = 12.0
+step = 1.0
+value = 12.0
+show_percentage = false
+
+[node name="Corazones" type="Node2D" parent="UI" unique_id=206042752]
+position = Vector2(14, 14)
+
+[node name="C1" type="Sprite2D" parent="UI/Corazones" unique_id=2039024680]
+texture_filter = 1
+texture = ExtResource("6_corazon")
+hframes = 2
+
+[node name="C2" type="Sprite2D" parent="UI/Corazones" unique_id=140322439]
+texture_filter = 1
+position = Vector2(18, 0)
+texture = ExtResource("6_corazon")
+hframes = 2
+
+[node name="C3" type="Sprite2D" parent="UI/Corazones" unique_id=975743646]
+texture_filter = 1
+position = Vector2(36, 0)
+texture = ExtResource("6_corazon")
+hframes = 2
+
+[node name="Mensaje" type="Label" parent="UI" unique_id=846421795]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Victoria" type="Control" parent="UI" unique_id=972308602]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(240, 135)
+mouse_filter = 2
+
+[node name="Oscuro" type="ColorRect" parent="UI/Victoria" unique_id=519372140]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Foto" type="TextureRect" parent="UI/Victoria" unique_id=689184285]
+texture_filter = 2
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -115.0
+offset_right = 60.0
+offset_bottom = 45.0
+texture = ExtResource("7_foto")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BienHecho" type="Label" parent="UI/Victoria" unique_id=1442131210]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 52.0
+offset_right = 200.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "¡Bien hecho!"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="UI/Victoria" unique_id=1139148892]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 84.0
+offset_right = 200.0
+offset_bottom = 100.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 11
+text = "Derrotaste a la Mega Hamburguesa"
+horizontal_alignment = 1

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c8bs72cfwcoh2"]
+
+[ext_resource type="Script" uid="uid://qw1a0uk1cqo4" path="res://Escenas/recetario.gd" id="1_rec"]
+
+[node name="Recetario" type="CanvasLayer" unique_id=1208156811]
+process_mode = 3
+layer = 10
+script = ExtResource("1_rec")
+
+[node name="Panel" type="Panel" parent="." unique_id=1092755949]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -115.0
+offset_right = 200.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=56669479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="Titulo" type="Label" parent="Panel/VBoxContainer" unique_id=862439870]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Recetario de la abuela"
+horizontal_alignment = 1
+
+[node name="Zanahorias" type="Label" parent="Panel/VBoxContainer" unique_id=2122770604]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Zanahorias: 0"
+horizontal_alignment = 1
+
+[node name="Lista" type="GridContainer" parent="Panel/VBoxContainer" unique_id=1576554656]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="Mensaje" type="Label" parent="Panel/VBoxContainer" unique_id=1702140114]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="Cerrar" type="Button" parent="Panel/VBoxContainer" unique_id=1350016508]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 11
+text = "Cerrar (R)"

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cm6e15tlsxais"]
+
+[ext_resource type="Script" uid="uid://2h5cvptvr0go" path="res://Escenas/gelatina.gd" id="1_fbsux"]
+[ext_resource type="Texture2D" uid="uid://ca5kp7rh7h1m4" path="res://Escenas/Plataformero/gelatina.png" id="2_fbsux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s781u"]
+atlas = ExtResource("2_fbsux")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je8m1"]
+atlas = ExtResource("2_fbsux")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v08uw"]
+atlas = ExtResource("2_fbsux")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmc44"]
+atlas = ExtResource("2_fbsux")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ogyo"]
+atlas = ExtResource("2_fbsux")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s781u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je8m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v08uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmc44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ogyo")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbsux"]
+size = Vector2(11, 8)
+
+[node name="Node2D" type="Node2D" unique_id=1750440260]
+script = ExtResource("1_fbsux")
+
+[node name="Gelatina" type="AnimatedSprite2D" parent="." unique_id=639622407]
+position = Vector2(-7.5, 9)
+scale = Vector2(0.8828125, 0.859375)
+sprite_frames = SubResource("SpriteFrames_uj04i")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=538741844]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2085827520]
+position = Vector2(-7.5, 9)
+shape = SubResource("RectangleShape2D_fbsux")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

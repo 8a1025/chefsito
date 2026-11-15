@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://h6x46fubrxt5"]
+
+[ext_resource type="Texture2D" uid="uid://hhewjc06wfj4" path="res://Escenas/portal2.png" id="1_74bae"]
+[ext_resource type="Script" uid="uid://3vmkegutaghg" path="res://Escenas/portal_2.gd" id="1_813qw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5viw"]
+radius = 6.708204
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_813qw"]
+atlas = ExtResource("1_74bae")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evb3w"]
+atlas = ExtResource("1_74bae")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyglx"]
+atlas = ExtResource("1_74bae")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_813qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evb3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyglx")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1441506548]
+script = ExtResource("1_813qw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=531276662]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1277466613]
+shape = SubResource("CircleShape2D_p5viw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1255870598]
+sprite_frames = SubResource("SpriteFrames_uj04i")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
